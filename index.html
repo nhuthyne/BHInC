@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BH InC - Enterprise Portal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -14,6 +14,8 @@
             --text-color: #334155;
             --bg-color: #f1f5f9;
             --white: #ffffff;
+            --success-color: #10b981;
+            --social-color: #1877f2;
         }
 
         * {
@@ -31,6 +33,7 @@
             align-items: center;
             min-height: 100vh;
             flex-direction: column;
+            padding: 20px 0;
         }
 
         /* Container chính */
@@ -46,13 +49,13 @@
             transition: all 0.3s ease;
         }
 
-        /* Phần Header Thông tin (Thời tiết, Giờ) */
+        /* Header (Clock & Weather) */
         .status-bar {
             background: linear-gradient(135deg, var(--primary-color), #1e293b);
             color: var(--white);
             border-radius: 15px;
             padding: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);
         }
 
@@ -78,32 +81,19 @@
             font-size: 0.9rem;
         }
 
-        .location-box {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+        .location-box { display: flex; align-items: center; gap: 5px; }
 
-        /* Logo Doanh Nghiệp */
-        .brand-logo {
-            margin-bottom: 30px;
-        }
-        
-        .brand-logo h1 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            letter-spacing: -1px;
-        }
-        
-        .brand-logo span {
-            color: var(--accent-color);
-        }
+        /* Logo */
+        .brand-logo { margin-bottom: 25px; }
+        .brand-logo h1 { font-size: 2rem; color: var(--primary-color); letter-spacing: -1px; }
+        .brand-logo span { color: var(--accent-color); }
 
-        /* Khu vực nút bấm */
+        /* Các nút chức năng chính */
         .action-area {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            margin-bottom: 25px;
         }
 
         .btn-business {
@@ -116,28 +106,11 @@
             padding: 15px 20px;
             border-radius: 12px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .btn-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .btn-title {
-            font-weight: 600;
-            color: var(--primary-color);
-            font-size: 1rem;
-        }
-
-        .btn-desc {
-            font-size: 0.75rem;
-            color: #64748b;
-            margin-top: 2px;
-        }
-
+        .btn-content { display: flex; flex-direction: column; align-items: flex-start; }
+        .btn-title { font-weight: 600; color: var(--primary-color); font-size: 1rem; }
+        .btn-desc { font-size: 0.75rem; color: #64748b; margin-top: 2px; }
         .btn-icon {
             font-size: 1.2rem;
             color: var(--accent-color);
@@ -147,24 +120,83 @@
             transition: all 0.3s ease;
         }
 
-        /* Hiệu ứng Hover */
         .btn-business:hover {
             border-color: var(--accent-color);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(59, 130, 246, 0.1);
         }
+        .btn-business:hover .btn-icon { background: var(--accent-color); color: var(--white); }
 
-        .btn-business:hover .btn-icon {
-            background: var(--accent-color);
-            color: var(--white);
+        /* Khu vực Liên hệ (Contact Hub) */
+        .contact-label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            font-weight: 500;
+            margin-bottom: 10px;
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding-left: 5px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.2s ease;
+        }
+
+        .contact-item i { font-size: 1.2rem; margin-bottom: 5px; color: #64748b; }
+        .contact-item span { font-size: 0.7rem; font-weight: 500; }
+
+        /* Hover effects */
+        .contact-item:hover { transform: translateY(-2px); border-color: transparent; }
+        .contact-item.email:hover { background: #fee2e2; color: #ef4444; }
+        .contact-item.email:hover i { color: #ef4444; }
+        
+        .contact-item.zalo:hover { background: #dcfce7; color: #10b981; }
+        .contact-item.zalo:hover i { color: #10b981; }
+        
+        .contact-item.fb:hover { background: #dbeafe; color: #2563eb; }
+        .contact-item.fb:hover i { color: #2563eb; }
+
+        /* Quảng Cáo */
+        .ad-section {
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f8fafc;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .ad-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: #94a3b8;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
 
         /* Footer */
-        .footer {
-            margin-top: 30px;
-            font-size: 0.7rem;
-            color: #94a3b8;
-        }
+        .footer { margin-top: 25px; font-size: 0.7rem; color: #94a3b8; }
 
     </style>
 </head>
@@ -213,47 +245,68 @@
             </a>
         </div>
 
+        <div class="contact-label">Contact Work</div>
+        <div class="contact-grid">
+            <a href="mailto:Nhuthyne@gmail.com" class="contact-item email">
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </a>
+            
+            <a href="https://zalo.me/0376138554" class="contact-item zalo" target="_blank">
+                <i class="fas fa-phone-alt"></i>
+                <span>Zalo</span>
+            </a>
+            
+            <a href="https://www.facebook.com/nhuthynee?" class="contact-item fb" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+                <span>Social</span>
+            </a>
+        </div>
+
+        <div class="ad-section">
+            <div class="ad-label">Sponsored Partner</div>
+            <script>
+                atOptions = {
+                    'key' : 'add18c766f1b5fa58223d889f64cca94',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highperformanceformat.com/add18c766f1b5fa58223d889f64cca94/invoke.js"></script>
+            </div>
+
         <div class="footer">
             © 2026 BH InC. All rights reserved.<br>Designed for Bao Hy.
         </div>
     </div>
 
     <script>
-        // 1. Xử lý Đồng hồ & Ngày tháng
         function updateClock() {
             const now = new Date();
             const timeString = now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
             const dateString = now.toLocaleDateString('vi-VN', { weekday: 'long', day: 'numeric', month: 'long' });
-            
             document.getElementById('clock').textContent = timeString;
             document.getElementById('date').textContent = dateString;
         }
         setInterval(updateClock, 1000);
         updateClock();
 
-        // 2. Xử lý Vị trí & Thời tiết (Sử dụng Open-Meteo API - Không cần Key)
         function getWeather(lat, lon) {
             const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
-            
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    const temp = Math.round(data.current_weather.temperature);
-                    document.getElementById('temperature').textContent = `${temp}°C`;
-                    
-                    // Xử lý icon thời tiết cơ bản dựa trên mã WMO
-                    const code = data.current_weather.weathercode;
-                    const iconEl = document.getElementById('weather-icon');
-                    
-                    if (code <= 3) iconEl.className = "fas fa-sun"; // Nắng/Ít mây
-                    else if (code <= 67) iconEl.className = "fas fa-cloud-rain"; // Mưa
-                    else if (code <= 99) iconEl.className = "fas fa-bolt"; // Giông bão
-                    else iconEl.className = "fas fa-cloud";
-                })
-                .catch(err => {
-                    console.error("Lỗi lấy thời tiết:", err);
-                    document.getElementById('temperature').textContent = "N/A";
-                });
+            fetch(url).then(response => response.json()).then(data => {
+                const temp = Math.round(data.current_weather.temperature);
+                document.getElementById('temperature').textContent = `${temp}°C`;
+                const code = data.current_weather.weathercode;
+                const iconEl = document.getElementById('weather-icon');
+                if (code <= 3) iconEl.className = "fas fa-sun";
+                else if (code <= 67) iconEl.className = "fas fa-cloud-rain";
+                else if (code <= 99) iconEl.className = "fas fa-bolt";
+                else iconEl.className = "fas fa-cloud";
+            }).catch(err => {
+                document.getElementById('temperature').textContent = "N/A";
+            });
         }
 
         function getLocation() {
@@ -262,9 +315,6 @@
                     (position) => {
                         const lat = position.coords.latitude;
                         const lon = position.coords.longitude;
-                        
-                        // Cập nhật text vị trí (Giả lập hiển thị vùng)
-                        // Để lấy tên TP chính xác cần Google API (có phí), nên ở đây ta để hiển thị chung
                         document.getElementById('location').textContent = "Vị trí của bạn"; 
                         getWeather(lat, lon);
                     },
@@ -277,8 +327,6 @@
                 document.getElementById('location').textContent = "Không hỗ trợ";
             }
         }
-
-        // Gọi hàm lấy vị trí khi load trang
         window.onload = getLocation;
     </script>
 </body>
